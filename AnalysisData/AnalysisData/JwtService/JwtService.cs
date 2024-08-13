@@ -27,12 +27,12 @@ public class JwtService
         var roles = user.UserRoles;
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, userName),
+            new Claim("Name", userName),
         };
         foreach (var role in roles)
         {
             var result = await _roleRepository.GetRole(role.Id);
-            claims.Add(new Claim(ClaimTypes.Role, result.RoleName));
+            claims.Add(new Claim("Roles", result.RoleName));
         }
         
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
