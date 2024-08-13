@@ -1,8 +1,9 @@
 using AnalysisData.Data;
-using AnalysisData.RoleRepository;
-using AnalysisData.UserRepositories;
-using AnalysisData.UserRepositories.Abstraction;
-using Authentication;
+using AnalysisData.JwtService;
+using AnalysisData.Repository.RoleRepository;
+using AnalysisData.Repository.RoleRepository.Abstraction;
+using AnalysisData.Repository.UserRepository;
+using AnalysisData.Repository.UserRepository.Abstraction;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

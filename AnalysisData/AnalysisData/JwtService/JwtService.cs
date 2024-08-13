@@ -1,11 +1,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using AnalysisData.RoleRepository;
-using AnalysisData.UserRepositories.Abstraction;
+using AnalysisData.Repository.RoleRepository.Abstraction;
+using AnalysisData.Repository.UserRepository.Abstraction;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Authentication;
+namespace AnalysisData.JwtService;
 
 public class JwtService
 {
@@ -31,7 +31,7 @@ public class JwtService
         };
         foreach (var role in roles)
         {
-            var result = await _roleRepository.GetRoles(role.Id);
+            var result = await _roleRepository.GetRole(role.Id);
             claims.Add(new Claim(ClaimTypes.Role, result.RoleName));
         }
         

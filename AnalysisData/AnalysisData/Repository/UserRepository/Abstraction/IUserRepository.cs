@@ -1,6 +1,6 @@
 ﻿using AnalysisData.UserManage.Model;
 
-namespace AnalysisData.UserRepositories.Abstraction;
+namespace AnalysisData.Repository.UserRepository.Abstraction;
 
 public interface IUserRepository
 {

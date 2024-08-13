@@ -1,12 +1,6 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using AnalysisData.UserManage.Model;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Authentication.Controllers;
+namespace AnalysisData.JwtService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
