@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AnalysisData.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,8 @@ namespace AnalysisData.Migrations
                 name: "AttributeEdges",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -30,7 +31,8 @@ namespace AnalysisData.Migrations
                 name: "AttributeNodes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -143,7 +145,8 @@ namespace AnalysisData.Migrations
                 name: "EntityNodes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     NodeFileReferenceId = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -187,9 +190,10 @@ namespace AnalysisData.Migrations
                 name: "EntityEdges",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EntityIDSource = table.Column<Guid>(type: "uuid", nullable: false),
-                    EntityIDTarget = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EntityIDSource = table.Column<int>(type: "integer", nullable: false),
+                    EntityIDTarget = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -212,10 +216,11 @@ namespace AnalysisData.Migrations
                 name: "ValueNodes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Value = table.Column<string>(type: "text", nullable: false),
-                    EntityId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AttributeId = table.Column<Guid>(type: "uuid", nullable: false)
+                    EntityId = table.Column<int>(type: "integer", nullable: false),
+                    AttributeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -238,9 +243,10 @@ namespace AnalysisData.Migrations
                 name: "ValueEdges",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EntityId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AttributeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EntityId = table.Column<int>(type: "integer", nullable: false),
+                    AttributeId = table.Column<int>(type: "integer", nullable: false),
                     Value = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -273,7 +279,7 @@ namespace AnalysisData.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "ImageURL", "LastName", "Password", "PhoneNumber", "RoleId", "Username" },
-                values: new object[] { new Guid("3420886b-a4d4-4701-8926-bb9bbe31db94"), "admin@gmail.com", "admin", null, "admin", "jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=", "09131111111", 1, "admin" });
+                values: new object[] { new Guid("8ab41e25-44bb-4b43-aa2f-6f697edd425f"), "admin@gmail.com", "admin", null, "admin", "jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=", "09131111111", 1, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EntityEdges_EntityIDSource",
